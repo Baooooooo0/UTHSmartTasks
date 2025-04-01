@@ -2,7 +2,6 @@ package com.example.uthsmarttasks
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -22,7 +21,6 @@ import androidx.navigation.NavController
 fun ButtonScreen(navController: NavController, route: String, textButton1: String){
     Box(
         modifier = Modifier
-//            .fillMaxSize()
             .background(Color.White)
     ){
         Button(

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UTH Smart Tasks</string>
+
+    <string name="default_web_client_id" translatable="false">154656863622-esdmtt3719eg9av2uasenbc5is18jc7d.apps.googleusercontent.com</string>
 </resources>

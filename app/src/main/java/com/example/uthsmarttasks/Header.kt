@@ -17,10 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
 
-fun Header(currentScreen: Int){
+fun Header(currentScreen: Int,navController: NavHostController){
     Row(
         modifier = Modifier.background(Color.White)
     ) {
@@ -30,7 +31,7 @@ fun Header(currentScreen: Int){
                 .fillMaxWidth()
         ) {
             Button(
-                onClick = { },
+                onClick = { navController.navigate("TaskScreen")},
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White,
                     contentColor = Color(0xFF42AFFF)
@@ -56,7 +57,7 @@ fun Header(currentScreen: Int){
                             .background(
                                 color = if (i == currentScreen) Color.Blue else Color.Gray.copy(0.3f),
                                 shape = CircleShape
-                            )
+                        )
                     )
                 }
             }

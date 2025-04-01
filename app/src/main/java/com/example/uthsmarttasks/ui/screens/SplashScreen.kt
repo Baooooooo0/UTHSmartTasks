@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.uthsmarttasks.R
 
+
 @Composable
 fun SplashScreen(navController: NavHostController){
     LaunchedEffect(Unit) {

@@ -18,14 +18,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.uthsmarttasks.R
 import com.example.uthsmarttasks.Footer
 import com.example.uthsmarttasks.Header
-import com.example.uthsmarttasks.R
+
 
 @Composable
 fun ThirdScreen(navController: NavHostController) {
     Column {
-        Header(3)
+        Header(3,navController)
         Box(
             modifier = Modifier
                 .background(Color.White),
@@ -57,6 +58,6 @@ fun ThirdScreen(navController: NavHostController) {
                 )
             }
         }
-        Footer(navController = navController, "first", "Get Started", showBackButton = true)
+        Footer(navController = navController, "taskScreen", "Get Started", showBackButton = true)
     }
 }
