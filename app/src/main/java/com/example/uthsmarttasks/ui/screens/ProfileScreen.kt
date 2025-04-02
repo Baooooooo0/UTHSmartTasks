@@ -10,12 +10,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -23,8 +30,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import com.example.uthsmarttasks.Footer
 import com.example.uthsmarttasks.R
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun HeaderProfile(navHostController: NavHostController, detail: String){
@@ -62,10 +71,13 @@ fun HeaderProfile(navHostController: NavHostController, detail: String){
     }
 }
 
-
-
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+
+    val user = FirebaseAuth.getInstance().currentUser
+    var userName by remember { mutableStateOf(user?.displayName ?: "") }
+    val imageUrl = user?.photoUrl?.toString() ?: ""
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -86,14 +98,51 @@ fun ProfileScreen(navController: NavHostController) {
                 .padding(top = 120.dp)
                 .background(color = Color.White)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.login_image),
-                contentDescription = "LoginImage",
-                modifier = Modifier
-                    .size(230.dp)
-            )
+            Box(modifier = Modifier.fillMaxHeight()){
+                if (imageUrl.isNotEmpty()) {
+                    AsyncImage(
+                        model = imageUrl,
+                        contentDescription = "User Avatar",
+                        modifier = Modifier
+                            .size(200.dp)
+                            .clip(CircleShape)
+                    )
+                } else {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                        contentDescription = "Default Avatar",
+                        modifier = Modifier
+                            .size(200.dp)
+                            .clip(CircleShape)
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.camera_image),
+                    contentDescription ="Camera Icon",
+                    modifier = Modifier
+                        .size(40.dp)
+                )
+            }
         }
     }
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Name",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                modifier = Modifier.padding(top = 380.dp, start = 30.dp)
+            )
+            OutlinedTextField(
+                value = userName,
+                onValueChange = { userName = it },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
+            )
+        }
 
     Box(
         modifier = Modifier

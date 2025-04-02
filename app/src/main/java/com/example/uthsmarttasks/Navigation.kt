@@ -24,11 +24,14 @@ fun AppNavigation() {
         composable("taskScreen") { TaskScreen(navController) }
         composable("authScreen") { AuthScreen(navController = navController) }
         composable("profileScreen") { ProfileScreen(navController) }
+
         composable("taskDetail/{taskId}") { backStackEntry ->
             val taskId = backStackEntry.arguments?.getString("taskId")?.toIntOrNull()
             if (taskId != null) {
                 TaskDetailScreen(taskId)
             }
         }
+
+
     }
 }

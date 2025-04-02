@@ -5,15 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.compose.rememberNavController
-import com.example.uthsmarttasks.apiHandler.RetrofitInstance
-import com.example.uthsmarttasks.ui.screens.AuthScreen
-import com.example.uthsmarttasks.ui.screens.ProfileScreen
-import com.example.uthsmarttasks.ui.screens.TaskDetailScreen
-import com.example.uthsmarttasks.ui.screens.TaskScreen
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {

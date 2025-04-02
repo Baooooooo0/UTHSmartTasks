@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -85,21 +86,6 @@ fun AuthScreen(
                 .padding(padding),
             contentAlignment = Alignment.Center
         ) {
-            Button(
-                onClick = { navController.navigate("profileScreen") },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = Color(0xFF42AFFF)
-                ),
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(top = 5.dp, end = 10.dp)
-            ) {
-                Text(
-                    text = "Profile",
-                    fontSize = 20.sp
-                )
-            }
             if (isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(50.dp)
@@ -111,7 +97,6 @@ fun AuthScreen(
                     if (user == null) {
                         SignInContent(
                             onSignInClick = { viewModel.signIn() },
-                            navController = navController
                         )
                     } else {
                         UserProfileContent(
@@ -129,20 +114,7 @@ fun AuthScreen(
 @Composable
 private fun SignInContent(
     onSignInClick: () -> Unit,
-    navController: NavController
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Button(
-            onClick = { navController.navigate("profileScreen") } ,
-            modifier = Modifier.align(Alignment.TopStart)
-        ) {
-            Text("Back")
-        }
-    }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -228,6 +200,25 @@ private fun UserProfileContent(
         model = user?.photoUrl
     )
 
+    Box(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Button(
+            onClick = { navController.navigate("profileScreen") },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.White,
+                contentColor = Color(0xFF42AFFF)
+            ),
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+        ) {
+            Text(
+                text = "Profile",
+                fontSize = 20.sp
+            )
+        }
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -268,3 +259,5 @@ private fun UserProfileContent(
         Footer(navController = navController, "taskScreen", "Get Started", showBackButton = false)
     }
 }
+
+
