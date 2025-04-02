@@ -19,13 +19,13 @@ import com.example.uthsmarttasks.apiHandler.TaskViewModel
 fun TaskScreen(navController: NavController, viewModel: TaskViewModel = viewModel()) {
     val tasks by viewModel.tasks
 
-    Column(modifier = Modifier.fillMaxWidth().padding(start = 15.dp, top = 35.dp ,end = 15.dp, bottom = 100.dp)) {
+    Box(modifier = Modifier.fillMaxSize().padding(start = 15.dp, top = 38.dp ,end = 15.dp, bottom = 15.dp)) {
+        LazyColumn {
+            items(tasks) { task ->
+                TaskButton(task, navController)
+            }
+        }
         MenuHeader()
-//        LazyColumn {
-//            items(tasks) { task ->
-//                TaskButton(task, navController)
-//            }
-//        }
         MenuFooter()
     }
 }
