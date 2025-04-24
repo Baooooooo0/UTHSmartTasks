@@ -1,4 +1,4 @@
-package com.example.uthsmarttasks
+package com.example.uthsmarttasks.recycle
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.uthsmarttasks.R
-import com.example.uthsmarttasks.Footer
-import com.example.uthsmarttasks.Header
+import com.example.uthsmarttasks.recycle.Footer
+import com.example.uthsmarttasks.recycle.Header
 
 
 @Composable

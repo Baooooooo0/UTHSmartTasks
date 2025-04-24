@@ -1,4 +1,4 @@
-package com.example.uthsmarttasks
+package com.example.uthsmarttasks.recycle
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -10,9 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun MenuFooter() {
+fun MenuFooter(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,7 +37,7 @@ fun MenuFooter() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Home Icon
-                IconButton(onClick = { /* Home navigation logic */ }) {
+                IconButton(onClick = { }) {
                     Icon(
                         imageVector = Icons.Default.Home,
                         contentDescription = "Home",
@@ -59,7 +60,7 @@ fun MenuFooter() {
                     contentAlignment = Alignment.Center
                 ) {
                     FloatingActionButton(
-                        onClick = { /* Add action logic */ },
+                        onClick = { navController.navigate("addScreen") },
                         containerColor = Color.Blue,
                         contentColor = Color.White
                     ) {

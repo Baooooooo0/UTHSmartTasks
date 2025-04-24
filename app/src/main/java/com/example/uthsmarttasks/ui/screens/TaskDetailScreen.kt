@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.uthsmarttasks.apiHandler.TaskViewModel
+import com.example.uthsmarttasks.ui.screens.viewmodel.TaskViewModel
 
 @Composable
 fun TaskDetailScreen(taskId: Int, viewModel: TaskViewModel = viewModel()) {

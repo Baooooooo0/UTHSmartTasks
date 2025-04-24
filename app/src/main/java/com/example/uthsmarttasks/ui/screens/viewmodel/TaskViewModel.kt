@@ -1,4 +1,4 @@
-package com.example.uthsmarttasks.apiHandler
+package com.example.uthsmarttasks.ui.screens.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,6 +6,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
+import com.example.uthsmarttasks.apiHandler.RetrofitInstance
+import com.example.uthsmarttasks.apiHandler.Task
+import com.example.uthsmarttasks.apiHandler.TaskDetail
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

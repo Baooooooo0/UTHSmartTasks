@@ -43,7 +43,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
-import com.example.uthsmarttasks.Footer
+import com.example.uthsmarttasks.recycle.Footer
 import com.example.uthsmarttasks.R
 import com.example.uthsmarttasks.sign_in.AuthViewModel
 import kotlinx.coroutines.launch

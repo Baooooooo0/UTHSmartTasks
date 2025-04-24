@@ -5,9 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -31,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.uthsmarttasks.Footer
+import com.example.uthsmarttasks.recycle.Footer
 import com.example.uthsmarttasks.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -76,6 +78,7 @@ fun ProfileScreen(navController: NavHostController) {
 
     val user = FirebaseAuth.getInstance().currentUser
     var userName by remember { mutableStateOf(user?.displayName ?: "") }
+    var userEmail = user?.email ?: "No email available"
     val imageUrl = user?.photoUrl?.toString() ?: ""
 
     Box(
@@ -142,6 +145,22 @@ fun ProfileScreen(navController: NavHostController) {
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
             )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Email",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                modifier = Modifier.padding(start = 30.dp)
+            )
+            OutlinedTextField(
+                value = userEmail,
+                onValueChange = { userEmail = it },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
         }
 
     Box(

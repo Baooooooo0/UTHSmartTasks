@@ -23,7 +23,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AppNavigation()
-//            ProfileScreen(rememberNavController())
         }
     }
 }

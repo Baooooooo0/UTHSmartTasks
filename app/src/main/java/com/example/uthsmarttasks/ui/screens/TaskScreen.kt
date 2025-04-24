@@ -10,23 +10,25 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.uthsmarttasks.MenuFooter
-import com.example.uthsmarttasks.MenuHeader
+import com.example.uthsmarttasks.recycle.MenuFooter
+import com.example.uthsmarttasks.recycle.MenuHeader
 import com.example.uthsmarttasks.apiHandler.Task
-import com.example.uthsmarttasks.apiHandler.TaskViewModel
+import com.example.uthsmarttasks.ui.screens.viewmodel.TaskViewModel
 
 @Composable
 fun TaskScreen(navController: NavController, viewModel: TaskViewModel = viewModel()) {
     val tasks by viewModel.tasks
 
     Box(modifier = Modifier.fillMaxSize().padding(start = 15.dp, top = 38.dp ,end = 15.dp, bottom = 15.dp)) {
-        LazyColumn {
+        LazyColumn(
+            modifier = Modifier.padding(top = 80.dp)
+        ) {
             items(tasks) { task ->
                 TaskButton(task, navController)
             }
         }
         MenuHeader()
-        MenuFooter()
+        MenuFooter(navController)
     }
 }
 
@@ -35,7 +37,9 @@ fun TaskButton(task: Task, navController: NavController) {
     Button(
         onClick = { navController.navigate("taskDetail/${task.id}") },
         shape = RoundedCornerShape(25),
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(text = task.title, style = MaterialTheme.typography.titleMedium)
